@@ -222,10 +222,16 @@
                   <span>Switch User</span>
                 </a>
               </li>
+            
               <li class="nav-item">
-                <a href="javascript:;" class="nav-link">
+                <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                   <i data-feather="log-out"></i>
                   <span>Log Out</span>
+                 
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                 </a>
               </li>
             </ul>
