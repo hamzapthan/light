@@ -12,7 +12,9 @@ class Category extends Model
         'user_id',
         'name',
         'detail',
-        'status',
-
-    ]
+        'status'
+    ];
+    public function products(){
+        return $this->hasMany(Product::class,'cat_id');
+    }
 }
