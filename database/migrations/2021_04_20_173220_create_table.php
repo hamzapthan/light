@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProducts extends Migration
+class CreateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -29,6 +29,9 @@ class CreateProducts extends Migration
             $table->integer('xl');
             $table->integer('xxl');
             $table->integer('other');
+            $table->string('metaTitle'); //
+            $table->string('metaDesc');  // 
+            $table->string('metaKeyword'); //
             
             $table->timestamps();
         });

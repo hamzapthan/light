@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePricesTable extends Migration
+class CreateTablePrices extends Migration
 {
     /**
      * Run the migrations.
@@ -23,14 +23,14 @@ class CreatePricesTable extends Migration
             $table->integer('purchaseXl');
             $table->integer('purchaseXxl');
             $table->integer('purchaseOther');
-            //
+            // min price
             $table->integer('minSmall');
             $table->integer('minMedium');
             $table->integer('minLarge');
             $table->integer('minXl');
             $table->integer('minXxl');
             $table->integer('minOther');
-            //
+            // max price
             $table->integer('maxSmall');
             $table->integer('maxMedium');
             $table->integer('maxLarge');

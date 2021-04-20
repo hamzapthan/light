@@ -267,15 +267,20 @@
               </label>    
               </div>      
            </div>
-           <div class="col-md-4">
-          <label for="">Quantity</label>
+           <div class="col-md-3">
+          <label for="">Purchase Price</label>
           <input type="number" class="form-control" placeholder="Quantity" name="quantitySmall" >
           </div>
-          <div class="col-md-4">
-          <label for="">Price</label>
+          <div class="col-md-3">
+          <label for="">Discount</label>
+          <input type="number" class="form-control" placeholder="Price" name="priceSmall">
+          </div>
+          <div class="col-md-3">
+          <label for="">Sale Price</label>
           <input type="number" class="form-control" placeholder="Price" name="priceSmall">
           </div>
           </div>
+
           <div class="row">
            <div class="col-md-2">
            <div class="form-check form-check-inline ">
@@ -285,15 +290,20 @@
               </label>    
               </div>      
            </div>
-           <div class="col-md-4">
+           <div class="col-md-3">
           <label for="">Quantity</label>
           <input type="number" class="form-control" placeholder="Quantity" name="quantityMedium">
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
           <label for="">Price</label>
           <input type="number" class="form-control" placeholder="Price" name="priceMedium">
           </div>
+          <div class="col-md-3">
+          <label for="">Sale Price</label>
+          <input type="number" class="form-control" placeholder="Price" name="priceSmall">
           </div>
+          </div>
+
           <div class="row">
            <div class="col-md-2">
            <div class="form-check form-check-inline ">
@@ -303,15 +313,20 @@
               </label>    
               </div>      
            </div>
-           <div class="col-md-4">
+           <div class="col-md-3">
           <label for="">Quantity</label>
           <input type="number" class="form-control" placeholder="Quantity" name="quantityLarge">
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
           <label for="">Price</label>
           <input type="number" class="form-control" placeholder="Price" name="priceLarge">
           </div>
+          <div class="col-md-3">
+          <label for="">Sale Price</label>
+          <input type="number" class="form-control" placeholder="Price" name="priceSmall">
           </div>
+          </div>
+
           <div class="row">
            <div class="col-md-2">
            <div class="form-check form-check-inline ">
@@ -321,15 +336,20 @@
               </label>    
               </div>      
            </div>
-           <div class="col-md-4">
+           <div class="col-md-3">
           <label for="">Quantity</label>
           <input type="number" class="form-control" placeholder="Quantity" name="quantityxl">
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
           <label for="">Price</label>
           <input type="number" class="form-control" placeholder="Price" name="priceXl">
           </div>
+          <div class="col-md-3">
+          <label for="">Sale Price</label>
+          <input type="number" class="form-control" placeholder="Price" name="priceSmall">
           </div>
+          </div>
+
           <div class="row">
            <div class="col-md-2">
            <div class="form-check form-check-inline ">
@@ -339,15 +359,20 @@
               </label>    
               </div>      
            </div>
-           <div class="col-md-4">
+           <div class="col-md-3">
           <label for="">Quantity</label>
           <input type="number" class="form-control" placeholder="Quantity" name="quantityXxl">
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
           <label for="">Price</label>
           <input type="number" class="form-control" placeholder="Price" name="priceXxl">
           </div>
+          <div class="col-md-3">
+          <label for="">Sale Price</label>
+          <input type="number" class="form-control" placeholder="Price" name="priceSmall">
           </div>
+          </div>
+
           <div class="row">
            <div class="col-md-2">
            <div class="form-check form-check-inline ">
@@ -357,13 +382,17 @@
               </label>    
               </div>      
            </div>
-           <div class="col-md-4">
+           <div class="col-md-3">
           <label for="">Quantity</label>
           <input type="number" class="form-control" placeholder="Quantity" name="quantityOther">
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
           <label for="">Price</label>
           <input type="number" class="form-control" placeholder="Price" name="priceOther">
+          </div>
+          <div class="col-md-3">
+          <label for="">Sale Price</label>
+          <input type="number" class="form-control" placeholder="Price" name="priceSmall">
           </div>
           </div>
           
@@ -381,6 +410,20 @@
               </span>
             </div>
           </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Meta Keyword</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" name="metaKeyword"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Meta Tttle</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="metaTitle"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Meta Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="metaDesc"></textarea>
+          </div>
+         
           <div class="form-group">
           <label>Status</label>
           <select class="form-control form-control-lg" name="status" > 

@@ -22,6 +22,9 @@ class Product extends Model
         'xl',
         'xxl',
         'other',
+        'metaTitle',
+        'metaDesc',
+        'metaKeyword',
        
 
     ];
