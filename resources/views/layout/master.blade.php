@@ -2,14 +2,14 @@
 
 <html>
 <head>
-  <title>NobleUI Laravel Admin Dashboard Template</title>
+  <title> E-Commerce</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- CSRF Token -->
-  <meta name="_token" content="{{ csrf_token() }}">
   
+  <meta name="csrf-token" content="{{ csrf_token() }}"> 
   <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
 
   <!-- plugin css -->
@@ -42,6 +42,8 @@
   </div>
 
     <!-- base js -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('assets/plugins/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
