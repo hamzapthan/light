@@ -128,3 +128,4 @@ Route::get('/addPro', 'ProductController@InsertProPage')->name('/addPro'); // sh
 Route::get('/showPro', 'ProductController@showAllProduct'); // show All Products  // donne
 Route::Delete('delPro/{id}', 'ProductController@delProduct')->name('del.pro'); // delete products    // done
 Route::get('singlePro/{id}', 'ProductController@showSingleProduct'); // sHOW SINGLE Product    // done
+Route::POST('/insertPro', 'ProductController@addProducts')->name('insert.pro'); // sHOW SINGLE Product    // done
