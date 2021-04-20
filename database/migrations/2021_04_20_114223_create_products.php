@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsTable extends Migration
+class CreateProducts extends Migration
 {
     /**
      * Run the migrations.
@@ -18,15 +18,18 @@ class CreateProductsTable extends Migration
             $table->integer('cat_id')->unsigned()->nullable();
             $table->foreign('cat_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('proName');
-            $table->string('proDetail');
-            $table->string('proBrand');
-            $table->integer('quantity');
-            $table->integer('rating');
-            $table->string('size');
-            $table->string('image');
-            $table->integer('price');
+            $table->string('proBrnad');
             $table->string('colour');
+            $table->string('image');
+            $table->string('proDetail');
             $table->integer('status');
+            $table->integer('small');
+            $table->integer('medium');
+            $table->integer('large');
+            $table->integer('xl');
+            $table->integer('xxl');
+            $table->integer('other');
+            
             $table->timestamps();
         });
     }

@@ -11,15 +11,21 @@ class Product extends Model
     protected $fillable = [
         'cat_id',
         'proName',
-        'proDetail',
-        'proBrand',
-        'quantity',
-        'rating',
-        'size',
+        'proBrnad',
+        'colour',
         'image',
-        'price',
-        'colour', 
-        'status'
+        'proDetail',
+        'status',
+        'small',
+        'medium',
+        'large', 
+        'xl',
+        'xxl',
+        'other',
+       
 
     ];
+    public function price(){
+        return $this->hasOne(Price::class,'pro_id');
+    }
 }

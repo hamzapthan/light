@@ -112,8 +112,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
                   <th>Product Name</th>
                  
                   <th>Product Brand</th>
-                  <th>Product Quantity</th>
-                  <th>Size</th>  
+                  <th>Product Colour</th>
+                 
                   <th>Status</th>
                   <th>Edit</th>
                            
@@ -130,9 +130,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 </td> -->
                
                   <td>{{$singlePro->proName}}</td>
-                  <td>{{$singlePro->proBrand}}</td>
-                  <td>{{$singlePro->quantity}}</td>
-                  <td>{{$singlePro->size}}</td>
+                  <td>{{$singlePro->proBrnad}}</td>
+                  <td>{{$singlePro->colour}}</td>
+                
+            
                  @if($singlePro->status == 0)
                   <td>In Active</td>
                  @elseif($singlePro->status == 1)
@@ -152,10 +153,107 @@ body {font-family: Arial, Helvetica, sans-serif;}
     </div>
   </div>
 </div>
+<!-- this is a Quantity Section -->
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">Product Quantity</h6>
+       
+        <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  
+                  <th>Small</th>
+                 
+                  <th>Medium</th>
+                  <th>Large</th>
+                  <th>XL</th>
+                  <th>XXL</th>
+                  <th>Other</th>
+                 
+                           
+                </tr>
+              </thead>
+              <tbody>
+             
+                <tr >
+                  <td>{{$singlePro->small}}</td>
+                  <td>{{$singlePro->medium}}</td>
+                  <td>{{$singlePro->large}}</td>
+                  <td>{{$singlePro->xl}}</td>
+                  <td>{{$singlePro->xxl}}</td>
+                  <td>{{$singlePro->other}}</td>
+                </tr>
+               
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">Product Prices</h6>
+       
+        <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  
+                  <th>Small</th>
+                 
+                  <th>Medium</th>
+                  <th>Large</th>
+                  <th>XL</th>
+                  <th>XXL</th>
+                  <th>Other</th>
+                 
+                           
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($price as $prices)
+                <tr >
+                <td>{{ $prices->priceSmall }}</td>
+                  <td>{{ $prices->priceMedium }}</td> 
+                  <td>{{ $prices->priceLarge }}</td>
+                  <td>{{ $prices->priceXl }}</td>
+                  <td>{{ $prices->priceXxl }}</td>
+                  <td>{{ $prices->priceOther }}</td> 
+          
+              
+    
+                
+                </tr>
+               @endforeach
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 <div class="form-group">
             <label for="exampleFormControlTextarea1">Details about the Product</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">{{$singlePro->proDetail}} </textarea>
           </div>
+
+
+
+
           <style>
           .thumbnail {
   margin-top: 50px;
@@ -167,7 +265,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
      @foreach(json_decode($singlePro->image,true) as $images)
 			<div class="col-lg-3 col-sm-2">
 				<div class="thumbnail">
-					<img src="{{ asset('images/'.$images) }}" style="height: 200px; width:200px;">
+					<img src="{{ asset($images) }}" style="height: 200px; width:200px;">
 				</div>
 			</div>
       @endforeach

@@ -32,7 +32,7 @@
                 <tr id= "row_{{$catProducts->id}}">
                 <td class="py-1">
                 @foreach(json_decode($catProducts->image,true) as $images)
-                  <img src="{{asset('images/'.$images)}}" alt="image" style="border-radius: 0px; width: 75px; height: 70px;" >
+                  <img src="{{asset($images)}}" alt="image" style="border-radius: 0px; width: 75px; height: 70px;" >
                   @break
                  @endforeach
                 </td>
@@ -47,7 +47,7 @@
                   <td>Pending</td>
                   @endif
                   <td><div class="btn-group">
- <a href=""> <button type="button" class="btn btn-primary">Edit</button></a>
+ <a href="/../editProduct/{{$catProducts->id}}"> <button type="button" class="btn btn-primary">Edit</button></a>
   <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span class="sr-only">Toggle Dropdown</span>
   </button>
@@ -86,7 +86,7 @@
               <thead>
                 <tr>
                   <th>Image</th>
-                  <th>  Product Name</th>
+                  <th>  dddProduct Name</th>
                   <th>Product Brand</th>
                   <th>Category</th>
                   <th>Status</th>
@@ -99,7 +99,7 @@
                 <tr id= "row_{{$products->id}}">
                 <td class="py-1">
                 @foreach(json_decode($products->image,true) as $images)
-                  <img src="{{asset('images/'.$images)}}" alt="image" style="border-radius: 0px; width: 75px; height: 70px;" >
+                  <img src="{{asset($images)}}" alt="image" style="border-radius: 0px; width: 75px; height: 70px;" >
                   @break
                  @endforeach
                 </td>
@@ -114,7 +114,7 @@
                   <td>Pending</td>
                   @endif
                   <td><div class="btn-group">
- <a href=""> <button type="button" class="btn btn-primary">Edit</button></a>
+ <a href="../../editProduct/{{$products->id}}"> <button type="button" class="btn btn-primary">Edit</button></a>
   <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span class="sr-only">Toggle Dropdown</span>
   </button>
@@ -123,7 +123,7 @@
      <a href="javascript:void(0)" data-id="" onclick="editPost(event.target)" class="dropdown-item">Mark as 'SOLD'</a>
     <a class="dropdown-item" href="">Images</a>
     <a class="dropdown-item" href="#">Create Invoice</a>
-<a class="dropdown-item" href="javascript:void(0)"  data-id="" onclick="deletePost(event.target)">Delete</a>
+<a class="dropdown-item" href="javascript:void(0)"  data-id="{{$products->id}}" onclick="deletePost(event.target)">Delete</a>
     <a class="dropdown-item" href="#">Transfer</a>
     <a class="dropdown-item" href="#">Print</a>  </div>
 </div></td>
@@ -142,6 +142,7 @@
 @endif     
 <script>
   function deletePost(event){
+    
     let id    = $(event).data("id");
     let _url  = `../../delPro/${id}`;
     let _token =  $('meta[name="csrf-token"]').attr('content');

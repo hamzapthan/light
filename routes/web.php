@@ -16,7 +16,7 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/khan', function () {
+Route::get('/', function () {
     return view('dashboard');
 });
 
@@ -129,3 +129,4 @@ Route::get('/showPro', 'ProductController@showAllProduct'); // show All Products
 Route::Delete('delPro/{id}', 'ProductController@delProduct')->name('del.pro'); // delete products    // done
 Route::get('singlePro/{id}', 'ProductController@showSingleProduct'); // sHOW SINGLE Product    // done
 Route::POST('/insertPro', 'ProductController@addProducts')->name('insert.pro'); // sHOW SINGLE Product    // done
+Route::get('editProduct/{id}', 'ProductController@editProducts')->name('edit.pro'); // sHOW SINGLE Product    // done
