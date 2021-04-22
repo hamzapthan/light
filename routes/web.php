@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 Use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -130,3 +130,11 @@ Route::Delete('delPro/{id}', 'ProductController@delProduct')->name('del.pro'); /
 Route::get('singlePro/{id}', 'ProductController@showSingleProduct'); // sHOW SINGLE Product    // done
 Route::POST('/insertPro', 'ProductController@addProducts')->name('insert.pro'); // sHOW SINGLE Product    // done
 Route::get('editProduct/{id}', 'ProductController@editProducts')->name('edit.pro'); // sHOW SINGLE Product    // done
+
+// user details
+
+Route::get('showUser/', 'UserController@showUserAll')->name('user.all'); // sHOW SINGLE Product    // done
+Route::get('seeOrders/{id}', 'UserController@seeUserOrders')->name('order.user'); // sHOW SINGLE Product    // done
+
+//order details
+Route::post('addOrders/', 'OrderController@addOrders')->name('add.order'); // sHOW SINGLE Product    // done

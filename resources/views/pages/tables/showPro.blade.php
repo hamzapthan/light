@@ -38,7 +38,7 @@
                 </td>
                
                   <td>{{$catProducts->proName}}</td>
-                  <td>{{$catProducts->proBrand}}</td>
+                  <td>{{$catProducts->proBrnad}}</td>
                  @if($catProducts->status == 0)
                   <td>In Active</td>
                  @elseif($catProducts->status == 1)
@@ -86,11 +86,11 @@
               <thead>
                 <tr>
                   <th>Image</th>
-                  <th>  dddProduct Name</th>
+                  <th> Product Name</th>
                   <th>Product Brand</th>
-                  <th>Category</th>
                   <th>Status</th>
-                  <th>Details</th>
+                  <th>Options</th>
+                 
                
                 </tr>
               </thead>
@@ -105,7 +105,7 @@
                 </td>
                
                   <td>{{$products->proName}}</td>
-                  <td>{{$products->proBrand}}</td>
+                  <td>{{$products->proBrnad}}</td>
                  @if($products->status == 0)
                   <td>In Active</td>
                  @elseif($products->status == 1)
@@ -120,7 +120,7 @@
   </button>
   <div class="dropdown-menu">
     
-     <a href="javascript:void(0)" data-id="" onclick="editPost(event.target)" class="dropdown-item">Mark as 'SOLD'</a>
+  <a href="../../singlePro/{{$products->id}}"  class="dropdown-item">Full View</a>
     <a class="dropdown-item" href="">Images</a>
     <a class="dropdown-item" href="#">Create Invoice</a>
 <a class="dropdown-item" href="javascript:void(0)"  data-id="{{$products->id}}" onclick="deletePost(event.target)">Delete</a>

@@ -10,20 +10,21 @@ use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
     public function InsertProPage(){
- 
+             
          $catPro = Category::all();
          
         return view('pages.forms.addProduct',compact('catPro'));
       }
     public function addProducts(Request $request){
         
+     
       $colours = $request->colour;
      $data = array(
         $colours
      );
     
      $colour =   str_replace(' ',',',$data);
-     $co = json_encode($colour);
+     $colours = json_encode($colour);
     
      $cat_id =$request->cat_id; 
      
@@ -33,31 +34,44 @@ class ProductController extends Controller
       $proDetail = $request->proDetail;
       $status = $request->status;
       //
-      $small = $request->small;    /// image is miggaing
+      $purchaseSmall = $request->purchaseSmall;    /// image is miggaing
+      $minSmall = $request->minSmall;
+      $maxSmall = $request->maxSmall;
       $quantitySmall = $request->quantitySmall;
-      $priceSmall = $request->priceSmall;
       //
-      $medium = $request->medium; 
-      $quantityMedium = $request->quantityMedium;
-      $priceMedium = $request->priceMedium; 
-      //
-      $large = $request->large; 
+      $purchaseLarge = $request->purchaseLarge;   
+      $minLarge = $request->minLarge;
+      $maxLarge = $request->maxLarge;
       $quantityLarge = $request->quantityLarge;
-      $priceLarge = $request->priceLarge;
-      //
-      $xl = $request->xl; 
-      $quantityxl = $request->quantityxl;
-      $priceXl = $request->priceXl;
-      //
-      $xxl = $request->xxl; 
-      $quantityXxl = $request->quantityXxl;
-      $priceXxl = $request->priceXxl;
-      //quantityXxl
-      $other = $request->other; 
-      $quantityOther = $request->quantityOther;
-      $priceOther = $request->priceOther;
-     //
       
+      ////
+      $purchaseMedium = $request->purchaseMedium;   
+      $minMedium = $request->minMedium;
+      $maxMedium = $request->maxMedium;
+      $quantityMedium = $request->quantityMedium;
+      
+      ////
+      $purchaseXl = $request->purchaseXl;   
+      $minXl = $request->minXl;
+      $maxXl = $request->maxXl;
+      $quantityXl = $request->quantityXl;
+      
+      ////
+      $purchaseXxl = $request->purchaseXxl;   
+      $minXxl = $request->minXxl;
+      $maxXxl = $request->maxXxl;
+      $quantityXxl = $request->quantityXxl;
+      
+      ////quantityXxl
+      $purchaseOther = $request->purchaseOther;   
+      $minOther = $request->minOther;
+      $maxOther = $request->maxOther;
+      $quantityOther = $request->quantityOther;
+      
+      ////
+      $metaKeyword = $request->metaKeyword;   
+      $metaTitle = $request->metaTitle;
+      $metaDesc = $request->metaDesc;
       
       
     
@@ -103,37 +117,51 @@ class ProductController extends Controller
                'cat_id' => $cat_id,
                'proName'    => $proName,
                'proBrnad'  => $proBrand,
-               'colour'  => $co,
+               'colour'  => $colours,
                'image' => $images,
                'proDetail'    => $proDetail,
                'status'  => $status,
                'small'  => $quantitySmall,
                'medium'    => $quantityMedium,
                'large'  => $quantityLarge,
-               'xl'  => $quantityxl,
+               'xl'  => $quantityXl,
                'xxl'    => $quantityXxl,
                'other'  => $quantityOther,
+               'metaTitle'  => $metaTitle,
+               'metaDesc'    => $metaDesc,
+               'metaKeyword'  => $metaKeyword,
              
 
      ]);
     $lastInsert = $addCategory->id;
     
-    $addCategory = Price::updateOrCreate(['id'=>$request->id],[
+    $addCategory = Price::updateOrCreate(['pro_id'=>$request->id],[
       'pro_id' => $lastInsert,
-      'priceSmall'    => $priceSmall,
-      'priceLarge'  => $priceLarge,
-      'priceMedium'  => $priceMedium,
-      'priceXl' => $priceXl,
-      'priceXxl'    => $priceXxl,
-      'priceOther'  => $priceOther,
-      'status'  => 1,
-     
-    
-
+      'purchaseSmall'    => $purchaseSmall,
+      'purchaseMedium'  => $purchaseMedium,
+      'purchaseLarge'  => $purchaseLarge,
+      'purchaseXl' => $purchaseXl,
+      'purchaseXxl'    => $purchaseXxl,
+      'purchaseOther'  => $purchaseOther,
+         //
+         'minSmall'    => $minSmall,
+         'minMedium'  => $minMedium,
+         'minLarge'  => $minLarge,
+         'minXl' => $minXl,
+         'minXxl'    => $minXxl,
+         'minOther'  => $minOther,
+         //max price
+         'maxSmall'    => $maxSmall,
+         'maxMedium'  => $maxMedium,
+         'maxLarge'   => $maxLarge,
+         'maxXl'      => $maxXl,
+         'maxXxl'    => $maxXxl,
+         'maxOther'  => $maxOther,
+        'status'=>1
 ]);
-         return response()->json(['code'=>200,'message'=>'Data is insertted']);
+         return redirect()->back()->with(['success'=>'Data created successfullt']);
        }
-    //}
+    
     
     
     
@@ -189,10 +217,10 @@ class ProductController extends Controller
     
     public function editProducts($id){
        $findProduct = Product::find($id);
-          
        $catPro = Category::all();
-       
-       return view('pages.forms.addProduct',compact('findProduct','catPro'));
+       $price = Product::find($id)->price;
+      
+       return view('pages.forms.addProduct',compact('findProduct','catPro','price'));
     }
     
 }

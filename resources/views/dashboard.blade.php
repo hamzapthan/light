@@ -7,7 +7,8 @@
 
 
 @section('content')
-@if(Auth::user()->role == 'admin')
+@if(Auth::check())
+@if(Auth::user()->role == '1')
 <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
   <div>
     <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
@@ -45,7 +46,7 @@
                   <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item d-flex align-items-center" href="#"><i data-feather="eye" class="icon-sm mr-2"></i> <span class="">View</span></a>
+                  <a class="dropdown-item d-flex align-items-center" href="/showUser"><i data-feather="eye" class="icon-sm mr-2"></i> <span class="">View</span></a>
                   <a class="dropdown-item d-flex align-items-center" href="#"><i data-feather="edit-2" class="icon-sm mr-2"></i> <span class="">Edit</span></a>
                   <a class="dropdown-item d-flex align-items-center" href="#"><i data-feather="trash" class="icon-sm mr-2"></i> <span class="">Delete</span></a>
                   <a class="dropdown-item d-flex align-items-center" href="#"><i data-feather="printer" class="icon-sm mr-2"></i> <span class="">Print</span></a>
@@ -55,13 +56,27 @@
             </div>
             <div class="row">
               <div class="col-6 col-md-12 col-xl-5">
-                <h3 class="mb-2">3,897</h3>
+              @if(isset($countUser))
+              
+              @if($countUser > 0)
+                <h3 class="mb-2">{{$countUser}}</h3>
                 <div class="d-flex align-items-baseline">
                   <p class="text-success">
                     <span>+3.3%</span>
                     <i data-feather="arrow-up" class="icon-sm mb-1"></i>
                   </p>
                 </div>
+                @else
+                <h3 class="mb-2">0</h3>
+                <div class="d-flex align-items-baseline">
+                  <p class="text-success">
+                    <span>+3.3%</span>
+                    <i data-feather="arrow-up" class="icon-sm mb-1"></i>
+                  </p>
+                </div>
+               @endif
+                @endif
+                
               </div>
               <div class="col-6 col-md-12 col-xl-7">
                 <div id="apexChart1" class="mt-md-3 mt-xl-0"></div>
@@ -90,17 +105,27 @@
             </div>
             <div class="row">
               <div class="col-6 col-md-12 col-xl-5">
-                <h3 class="mb-2">35,084</h3>
+               @if(isset($countOrder))
+               @if($countOrder>0)
+                <h3 class="mb-2">{{ $countOrder }}</h3>
                 <div class="d-flex align-items-baseline">
-                  <p class="text-danger">
-                    <span>-2.8%</span>
-                    <i data-feather="arrow-down" class="icon-sm mb-1"></i>
-                  </p>
+                 
                 </div>
               </div>
               <div class="col-6 col-md-12 col-xl-7">
                 <div id="apexChart2" class="mt-md-3 mt-xl-0"></div>
               </div>
+              @else
+              <h3 class="mb-2">{{ $countOrder }}</h3>
+                <div class="d-flex align-items-baseline">
+                 
+                </div>
+              </div>
+              <div class="col-6 col-md-12 col-xl-7">
+                <div id="apexChart2" class="mt-md-3 mt-xl-0"></div>
+              </div>
+              @endif
+              @endif
             </div>
           </div>
         </div>
@@ -109,7 +134,7 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-baseline">
-              <h6 class="card-title mb-0">Growth</h6>
+              <h6 class="card-title mb-0">Products</h6>
               <div class="dropdown mb-2">
                 <button class="btn p-0" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
@@ -124,15 +149,24 @@
               </div>
             </div>
             <div class="row">
+              @if(isset($countProduct))
+              @if($countProduct>0)
+
               <div class="col-6 col-md-12 col-xl-5">
-                <h3 class="mb-2">89.87%</h3>
+                <h3 class="mb-2">{{$countProduct}}</h3>
                 <div class="d-flex align-items-baseline">
-                  <p class="text-success">
-                    <span>+2.8%</span>
-                    <i data-feather="arrow-up" class="icon-sm mb-1"></i>
-                  </p>
+                 
                 </div>
               </div>
+              @else
+              <div class="col-6 col-md-12 col-xl-5">
+                <h3 class="mb-2">0</h3>
+                <div class="d-flex align-items-baseline">
+                 
+                </div>
+              </div>
+              @endif
+              @endif
               <div class="col-6 col-md-12 col-xl-7">
                 <div id="apexChart3" class="mt-md-3 mt-xl-0"></div>
               </div>
@@ -333,11 +367,12 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-7 col-xl-8 stretch-card">
+ 
+<div class="col-lg-7 col-xl-8 stretch-card">
     <div class="card">
       <div class="card-body">
         <div class="d-flex justify-content-between align-items-baseline mb-2">
-          <h6 class="card-title mb-0">Projects</h6>
+          <h6 class="card-title mb-0">Pending Orders</h6>
           <div class="dropdown mb-2">
             <button class="btn p-0" type="button" id="dropdownMenuButton7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
@@ -356,71 +391,32 @@
             <thead>
               <tr>
                 <th class="pt-0">#</th>
-                <th class="pt-0">Project Name</th>
-                <th class="pt-0">Start Date</th>
-                <th class="pt-0">Due Date</th>
+                <th class="pt-0">User Name</th>
+                <th class="pt-0">User Email</th>
                 <th class="pt-0">Status</th>
-                <th class="pt-0">Assign</th>
+                <th class="pt-0">Register Date</th>
+                
+                <th class="pt-0">Order Details</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>NobleUI jQuery</td>
-                <td>01/01/2021</td>
-                <td>26/04/2021</td>
-                <td><span class="badge badge-danger">Released</span></td>
-                <td>Leonardo Payne</td>
+          @if(isset($getOrder)) 
+            @foreach($getOrder as $value) 
+              <tr> 
+                <td>{{  $value['name'] }}</td>
+                <td>{{  $value['email'] }}</td>
+                <td>{{  $value['colour'] }}</td>
+                <td>{{  $value['quantity'] }}</td>
+                <td>{{  $value['price'] }}</td>
+               @if($value['status'] = 0)
+                <td>Pending</td>
+                @else 
+                <td>delivered</td>
+                @endif
               </tr>
-              <tr>
-                <td>2</td>
-                <td>NobleUI Angular</td>
-                <td>01/01/2021</td>
-                <td>26/04/2021</td>
-                <td><span class="badge badge-success">Review</span></td>
-                <td>Carl Henson</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>NobleUI ReactJs</td>
-                <td>01/05/2021</td>
-                <td>10/09/2021</td>
-                <td><span class="badge badge-info-muted">Pending</span></td>
-                <td>Jensen Combs</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>NobleUI VueJs</td>
-                <td>01/01/2021</td>
-                <td>31/11/2021</td>
-                <td><span class="badge badge-warning">Work in Progress</span>
-                </td>
-                <td>Amiah Burton</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>NobleUI Laravel</td>
-                <td>01/01/2021</td>
-                <td>31/12/2021</td>
-                <td><span class="badge badge-danger-muted text-white">Coming soon</span></td>
-                <td>Yaretzi Mayo</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>NobleUI NodeJs</td>
-                <td>01/01/2021</td>
-                <td>31/12/2021</td>
-                <td><span class="badge badge-primary">Coming soon</span></td>
-                <td>Carl Henson</td>
-              </tr>
-              <tr>
-                <td class="border-bottom">3</td>
-                <td class="border-bottom">NobleUI EmberJs</td>
-                <td class="border-bottom">01/05/2021</td>
-                <td class="border-bottom">10/11/2021</td>
-                <td class="border-bottom"><span class="badge badge-info-muted">Pending</span></td>
-                <td class="border-bottom">Jensen Combs</td>
-              </tr>
+             @endforeach
+             @endif
+              
             </tbody>
           </table>
         </div>
@@ -523,6 +519,7 @@
       </div> 
     </div>
   </div>
+@endif
 @endif
 
 @endsection

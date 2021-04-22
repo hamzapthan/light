@@ -57,7 +57,7 @@
             </li>
            
             <li class="nav-item">
-              <a href="showPro/" class="nav-link {{ active_class(['ui-components/tooltips']) }}">Show Products</a>
+              <a href="/showPro" class="nav-link {{ active_class(['ui-components/tooltips']) }}">Show Products</a>
             </li>
             <li class="nav-item">
               <a href="{{ url('/ui-components/tooltips') }}" class="nav-link {{ active_class(['ui-components/tooltips']) }}">Status Change</a>

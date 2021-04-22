@@ -24,11 +24,11 @@ class Product extends Model
         'other',
         'metaTitle',
         'metaDesc',
-        'metaKeyword',
-       
-
-    ];
-    public function price(){
+        'metaKeyword'
+         ];
+   
+     public function price(){
         return $this->hasOne(Price::class,'pro_id');
     }
+
 }

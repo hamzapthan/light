@@ -129,9 +129,18 @@ body {font-family: Arial, Helvetica, sans-serif;}
                  @endforeach
                 </td> -->
                
+<?php  $colour = $singlePro['colour'];
+ $array = json_decode($colour);
+ $colours = implode("  ", $array);
+$colourss =   str_replace(',',' ',$colours);
+   
+
+
+?>
+                
                   <td>{{$singlePro->proName}}</td>
                   <td>{{$singlePro->proBrnad}}</td>
-                  <td>{{$singlePro->colour}}</td>
+                  <td>{{$colourss}}</td>
                 
             
                  @if($singlePro->status == 0)
@@ -141,7 +150,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                   @elseif($singlePro->status == 2)
                   <td>Pending</td>
                   @endif
-                  <td><a href="">Edit</a> </td>   
+                  <td><a href="/editProduct/{{$singlePro->id}}">Edit</a> </td>   
     
                 
                 </tr>
@@ -198,7 +207,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h6 class="card-title">Product Prices</h6>
+        <h6 class="card-title">Product Purchase Prices</h6>
        
         <div class="table-responsive">
             <table class="table table-hover">
@@ -219,12 +228,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
               <tbody>
                 @foreach($price as $prices)
                 <tr >
-                <td>{{ $prices->priceSmall }}</td>
-                  <td>{{ $prices->priceMedium }}</td> 
-                  <td>{{ $prices->priceLarge }}</td>
-                  <td>{{ $prices->priceXl }}</td>
-                  <td>{{ $prices->priceXxl }}</td>
-                  <td>{{ $prices->priceOther }}</td> 
+                <td>{{ $prices->purchaseSmall }}</td>
+                  <td>{{ $prices->purchaseMedium }}</td> 
+                  <td>{{ $prices->purchaseLarge }}</td>
+                  <td>{{ $prices->purchaseXl }}</td>
+                  <td>{{ $prices->purchaseXxl }}</td>
+                  <td>{{ $prices->purchaseOther }}</td> 
           
               
     
@@ -238,6 +247,96 @@ body {font-family: Arial, Helvetica, sans-serif;}
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">Product Sale Prices</h6>
+       
+        <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  
+                  <th>Small</th>
+                 
+                  <th>Medium</th>
+                  <th>Large</th>
+                  <th>XL</th>
+                  <th>XXL</th>
+                  <th>Other</th>
+                 
+                           
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($price as $prices)
+                <tr >
+                <td>{{ $prices->minSmall }}</td>
+                  <td>{{ $prices->minMedium }}</td> 
+                  <td>{{ $prices->minLarge }}</td>
+                  <td>{{ $prices->minXl }}</td>
+                  <td>{{ $prices->minXxl }}</td>
+                  <td>{{ $prices->minOther }}</td> 
+          
+              
+    
+                
+                </tr>
+               @endforeach
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">Product Discount Prices</h6>
+       
+        <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  
+                  <th>Small</th>
+                 
+                  <th>Medium</th>
+                  <th>Large</th>
+                  <th>XL</th>
+                  <th>XXL</th>
+                  <th>Other</th>
+                 
+                           
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($price as $prices)
+                <tr >
+                <td>{{ $prices->maxSmall }}</td>
+                  <td>{{ $prices->maxMedium }}</td> 
+                  <td>{{ $prices->maxLarge }}</td>
+                  <td>{{ $prices->maxXl }}</td>
+                  <td>{{ $prices->maxXxl }}</td>
+                  <td>{{ $prices->maxOther }}</td> 
+          
+              
+    
+                
+                </tr>
+               @endforeach
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
