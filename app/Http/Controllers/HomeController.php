@@ -25,14 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $countUser = User::all()->count();  
+        $countUser = User::newUsers()->count();
+       
        $countOrder   = Order::all()->count();
        $countProduct   = Product::all()->count();
+      
        $getOrder = User::join('orders','users.id','=','orders.user_id')
+                    ->orderBy('orders.created_at','desc')
                   ->get(['users.*','orders.*']);
-                
-   
-        return view('dashboard',compact('countUser','countOrder','countProduct','getOrder'));
+            
+          $totalSale = Order::getAllAmount()->sum('price');
+        return view('dashboard',compact('countUser','countOrder','countProduct','getOrder','totalSale'));
        
     }
 }

@@ -5,6 +5,7 @@ Use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +17,7 @@ use App\Http\Controllers\OrderController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('dashboard');
 });
 
@@ -113,7 +114,7 @@ Route::group(['prefix' => 'error'], function(){
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 //Category Routes
 Route::post('/addCategory', 'CategoryController@addCategory'); // add category   // done
 Route::get('/allCat', 'CategoryController@showAllCategory'); // show All category  // donne
@@ -135,6 +136,9 @@ Route::get('editProduct/{id}', 'ProductController@editProducts')->name('edit.pro
 
 Route::get('showUser/', 'UserController@showUserAll')->name('user.all'); // sHOW SINGLE Product    // done
 Route::get('seeOrders/{id}', 'UserController@seeUserOrders')->name('order.user'); // sHOW SINGLE Product    // done
+Route::get('UserOrders/{id}', 'UserController@showUserOrder')->name('show.all.order'); // show all order adainst a specific user   
 
 //order details
 Route::post('addOrders/', 'OrderController@addOrders')->name('add.order'); // sHOW SINGLE Product    // done
+Route::get('OrderDetail/{id}', 'OrderController@OrderDetail')->name('show.order'); // see order agains specific person    
+Route::get('orderdelivered/{id}', 'OrderController@orderDelivered')->name('show.all.order'); // show all order adainst a specific user   

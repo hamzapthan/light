@@ -23,20 +23,20 @@ class OrderController extends Controller
         
        $array = [
            [
-            "user_id" => "1",
+         
              "fullName" => "hamza",
                "postalCode" => "54000",
                "province" => "jhang",
                "city" => "lahore",
-               "status" => "pending"
+               "status" => "0"
            ],
            [
-            "user_id" => "1",
+         
              "fullName" => "hamza",
                "postalCode" => "54000",
                "province" => "jhang",
                "city" => "lahore",
-               "status" => "pending"
+               "status" => "0"
            ]
 
 
@@ -46,7 +46,7 @@ class OrderController extends Controller
      {
       
         $order_details =  new OrderDetail([
-            'user_id'    =>  $news['user_id'],
+           
             'fullName'    =>  $news['fullName'],
             'postalCode'      =>  $news['postalCode'],
             'province'         =>  $news['province'],
@@ -54,6 +54,7 @@ class OrderController extends Controller
             'status'         =>  $news['status']
 
      ]);
+     
      $createOrder->items()->save($order_details);
 
      }
@@ -62,4 +63,17 @@ class OrderController extends Controller
 
        return response()->json(['message'=>'data inserted']);
        }
+       public function OrderDetail($id){
+            $order = Order::find($id);
+          
+           
+            $orderDetail = $order->OrderDetails($id)->get();
+
+            return view('pages.tables.ShowOrder',compact('orderDetail','order'));
+       }
+       public function orderDelivered($id){
+         $order = OrderDetail::OrderDeliver($id);
+         return back()->with(['message'=>'data updates']);
+        }
+     
 }

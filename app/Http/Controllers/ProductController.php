@@ -5,8 +5,10 @@ use App\Product;
 use App\Category;
 use App\Price;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+
 class ProductController extends Controller
 {
     public function InsertProPage(){
@@ -16,7 +18,19 @@ class ProductController extends Controller
         return view('pages.forms.addProduct',compact('catPro'));
       }
     public function addProducts(Request $request){
-        
+          
+      $validate = $this->validate($request,[
+        'cat_id' => 'required',
+        'proName'    => 'required',
+        'proBrand'  => 'required',
+        'colour'  => 'required',
+
+
+      ]);
+      if(!$validate){
+
+        return back()->withErrors($validate);
+      }else{
      
       $colours = $request->colour;
      $data = array(
@@ -161,6 +175,7 @@ class ProductController extends Controller
 ]);
          return redirect()->back()->with(['success'=>'Data created successfullt']);
        }
+      }
     
     
     

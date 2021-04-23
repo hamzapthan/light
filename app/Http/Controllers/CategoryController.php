@@ -25,6 +25,7 @@ public function addCategory(Request $request){
 
 if (!$validate) {
   return redirect()->withErrors($validate);
+  
            
 }else{
   

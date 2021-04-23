@@ -21,9 +21,20 @@
     <div class="card">
       <div class="card-body">
         <h6 class="card-title">Basic Form</h6>
-        <form class="forms-sample" method="post" action="{{route('insert.pro')}}" enctype="multipart/form-data">
+        @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+        @endif
+
+       <form class="forms-sample" method="post" action="{{route('insert.pro')}}" enctype="multipart/form-data">
         @csrf
-        @if ($message = Session::get('success'))
+       
+@if ($message = Session::get('errors'))
 <div class="alert alert-success alert-block">
 	<button type="button" class="close" data-dismiss="alert">×</button>	
         <strong>{{ $message }}</strong>
@@ -42,7 +53,7 @@
         </div>
           <div class="form-group">
             <label for="exampleInputUsername1">Product Name</label>
-            <input type="text" class="form-control" id="catName" name="proName" autocomplete="off" value="{{$findProduct->proName}}">
+            <input type="text" class="form-control" id="catName" name="proName" {{ $errors->has('proName') ? 'error' : '' }} autocomplete="off" value="{{$findProduct->proName}}">
           </div>
         
           <div class="form-group">

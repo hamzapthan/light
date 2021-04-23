@@ -20,4 +20,12 @@ class UserController extends Controller
        return view('pages.tables.allUser',compact('userAll'));
        
     }
+    public function showUserOrder($id){
+        $order = User::find($id);
+        $userName = $order->name;
+        $userOrders = $order->getUserData()->get();
+     
+        return view('pages.tables.ShowOrder',compact('userName','userOrders'));
+   }
+   
 }

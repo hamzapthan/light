@@ -51,7 +51,7 @@
                <td>Acive</td>
                @endif
                <td>{{$users['created_at']}}</td>
-                <td><a href="{{route('order.user',$users->id)}}">Orders</a></td>
+                <td><a href="UserOrders/{{$users->id}}">Orders</a></td>
               </tr>
               @endforeach
              

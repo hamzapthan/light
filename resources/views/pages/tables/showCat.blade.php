@@ -61,6 +61,7 @@
        },
        success:function(response){
          if(response.code == 200){
+        alert('category is deleted');
         $("#row_"+id).remove();
          }
        }

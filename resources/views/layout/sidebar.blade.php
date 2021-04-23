@@ -1,6 +1,6 @@
 <nav class="sidebar">
   <div class="sidebar-header">
-    <a href="/" class="sidebar-brand">
+    <a href="/home" class="sidebar-brand">
       E-Commerce<span></span>
     </a>
     <div class="sidebar-toggler not-active">
@@ -13,7 +13,7 @@
     <ul class="nav">
       <li class="nav-item nav-category">Main</li>
       <li class="nav-item {{ active_class(['/']) }}">
-        <a href="/" class="nav-link">
+        <a href="/home" class="nav-link">
           <i class="link-icon" data-feather="box"></i>
           <span class="link-title">Dashboard</span>
         </a>

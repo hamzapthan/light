@@ -15,6 +15,12 @@
       <div class="card-body">
         <h6 class="card-title">Basic Form</h6>
         <form class="forms-sample">
+        @if ($message = Session::get('errors'))
+<div class="alert alert-success alert-block">
+	<button type="button" class="close" data-dismiss="alert">×</button>	
+        <strong>{{ $message }}</strong>
+</div>
+@endif
           <div class="form-group">
             <label for="exampleInputUsername1">Category Name</label>
             <input type="text" class="form-control" id="catName" name="catName"  placeholder="{{$category->name}}" value="{{old('name')}}" >

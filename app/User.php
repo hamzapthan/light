@@ -36,6 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function scopenewUsers($query){
+        return $query->where('role',0)->where('status',1);
+    }
+
+
+
+
     public function order(){
        return $this->hasMany(Order::class,'user_id');
     }
@@ -48,4 +56,15 @@ class User extends Authenticatable
            'id'
     );
     }
+    public function scopegetUserData(){
+         
+        return $this->hasManyThrough(OrderDetail::class,Order::class,
+          'user_id',  //
+          'order_id',
+          'id',
+          'id'
+   );
+}
+
+
 }

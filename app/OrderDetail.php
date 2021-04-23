@@ -16,4 +16,8 @@ class OrderDetail extends Model
         'city',
         'status',
     ];
+    public function scopeOrderDeliver($query,$id){
+        return $query->where('id','=', $id)->update(['status'=>1]);
+        
+     }
 }
