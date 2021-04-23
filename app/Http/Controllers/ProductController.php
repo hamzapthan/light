@@ -29,7 +29,7 @@ class ProductController extends Controller
       ]);
       if(!$validate){
 
-        return back()->withErrors($validate);
+        return redirect()->back()->with(['error'=>'some of the field is empty']);
       }else{
      
       $colours = $request->colour;

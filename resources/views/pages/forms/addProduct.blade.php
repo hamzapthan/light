@@ -34,7 +34,14 @@
        <form class="forms-sample" method="post" action="{{route('insert.pro')}}" enctype="multipart/form-data">
         @csrf
        
-@if ($message = Session::get('errors'))
+        @if ($message = Session::get('error'))
+<div class="alert alert-success alert-block">
+	<button type="button" class="close" data-dismiss="alert">×</button>	
+        <strong>{{ $message }}</strong>
+</div>
+@endif
+
+@if ($message = Session::get('message'))
 <div class="alert alert-success alert-block">
 	<button type="button" class="close" data-dismiss="alert">×</button>	
         <strong>{{ $message }}</strong>
