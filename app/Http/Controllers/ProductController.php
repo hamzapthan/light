@@ -238,4 +238,28 @@ class ProductController extends Controller
        return view('pages.forms.addProduct',compact('findProduct','catPro','price'));
     }
     
+    public function showProductImages($id){
+       $proImages = Product::where('id',$id)->get();
+       return  view('pages.tables.showImage',compact('proImages'));
+    }
+
+
+    public function deleteImages($id,$image)
+    { 
+      
+   $post = Product::find($id);
+   
+   //  $imgWillDelete = public_path() . '/images/'.$image;
+    // File::delete($imgWillDelete);
+     $images=json_decode($post->image);
+     $imagetoDel = url('images/'.$image); 
+     $_image=[];
+     $_image[]=$imagetoDel;
+     $data = $post->image=json_encode(array_values(array_diff($images,$_image)));
+     $post->save();
+     return response()->json(['code'=>'200','message'=>'data is deleted']);
+
+      }
+
+    
 }

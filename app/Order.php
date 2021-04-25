@@ -22,21 +22,22 @@ class Order extends Model
        
     ];
 
-    public function scopeitems()
-    {
-        return $this->hasMany(OrderDetail::class);
-    }
+    
 
     public function scopeActive($query)
     {
         return $query->where('status', 0);
     }
-    
+    /////////////////////
+    public function scopeitems()
+    {
+        return $this->hasMany(OrderDetail::class);
+    }
     public function scopeOrderDetails($query,$id)
     {
         return $query->items()->where('order_id',$id)->orderBy('id','desc');
     }
-
+///////////////////////
      public function scopeUserAllOrder($query,$id){
 
         //  return $this->hasManyThrough()

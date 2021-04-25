@@ -14,7 +14,15 @@ class Category extends Model
         'detail',
         'status'
     ];
-    public function products(){
+   
+    public function scopeproducts($id){
+     
         return $this->hasMany(Product::class,'cat_id');
     }
+    public function scopeCategoryDetails($query ,$id){
+        
+        return $query->products()->where('cat_id',$id)->count();
+    }
+   
+   
 }

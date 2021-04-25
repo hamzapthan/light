@@ -44,7 +44,7 @@ if (!$validate) {
 
 public function showAllCategory(){
   $category = Category::all();
-  return view('pages.tables.ShowCat',compact('category'));
+  return view('pages.tables.catShow',compact('category'));
 }
 
 
@@ -62,24 +62,17 @@ public function changeCatStatus($id){
    return response()->json(['message'=>'successfull','get_vehicle'=>$get_vehicle]);
 }
 
-// public function showSoldCars($id){
-//   $get_vehicle = Category::where('user_id',$id)->where('status',1)->get();
-//    return response()->json(['message'=>'successfull','get_vehicle'=>$get_vehicle]);
-// }
-
 public function showCatEdit($id){
- 
   $category = Category::find($id);
- 
   return view('pages.forms.addCategory',compact('category'));
 }
+
+
 public function showProducts($id,$name){
   $name = $name;
-  
   $data = Category::find($id);
-   $catProduct = $data->products()->simplePaginate(15);
-  
-  return view('pages.tables.showPro',compact('catProduct','name'));
+  $catProduct = $data->products()->get();
+  return view('pages.tables.showPros',compact('catProduct','name'));
 }
 
 }

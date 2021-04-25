@@ -47,29 +47,6 @@
   </div>
 </div>
 
-<script>
-  function deletePost(event){
-    let id    = $(event).data("id");
-    console.log(id)
-    let _url  = `delCat/${id}`;
-    let _token =  $('meta[name="csrf-token"]').attr('content');
-       $.ajax({
-       type:'DELETE',
-       url:_url,
-       data:{
-   _token:_token
-       },
-       success:function(response){
-         if(response.code == 200){
-        alert('category is deleted');
-        $("#row_"+id).remove();
-         }
-       }
-  });
-}
-
-</script>
-
 
 
 
