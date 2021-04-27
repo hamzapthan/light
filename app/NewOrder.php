@@ -5,35 +5,38 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class NewOrder extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
 
-        'pro_id',
+        
         'user_id',
-        'colour',
-        'price',
-        'quantity',
-        'size',
-        'status',
-      
-       
-    ];
-
+        'payment_status',
+        'payment_method',
+        'first_name',
+        'last_name',
+        'address',
+        'city',
+        'country',
+        'post_code',
+        'phone_number',
+        'notes'
+       ];
     
-
-    public function scopeActive($query)
+    
+     
+       public function scopeitems()
+       {
+           return $this->hasMany(OrderItem::class,'order_id','id');
+       }
+    
+       public function scopeActive($query)
     {
         return $query->where('status', 0);
     }
     /////////////////////
-    public function scopeitems()
-    {
-        return $this->hasMany(OrderDetail::class);
-    }
-
     
     public function scopeOrderDetails($query,$id)
     {
@@ -51,14 +54,10 @@ class Order extends Model
        
         return $this->hasMany(OrderDetail::class);
      }
+     
      public function scopegetAllAmount($query){
        
         return $query->where('status',1);
      }
-
-    
-
-
-
 
 }

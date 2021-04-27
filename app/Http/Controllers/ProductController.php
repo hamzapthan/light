@@ -184,7 +184,7 @@ class ProductController extends Controller
       $product = Product::all();
      
       
-      return view('pages.tables.ShowPro',compact('product'));
+      return view('pages.tables.ShowPros',compact('product'));
     }
     
     
@@ -259,6 +259,13 @@ class ProductController extends Controller
      $post->save();
      return response()->json(['code'=>'200','message'=>'data is deleted']);
 
+      }
+
+
+        
+      public function changeProStatus($id){
+        $findProduct = Product::ChangeStatus($id);
+        return redirect()->back();
       }
 
     

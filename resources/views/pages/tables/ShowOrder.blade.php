@@ -34,27 +34,34 @@
             <thead>
               <tr>
                 <th class="pt-0">#</th>
-                <th class="pt-0">User Name</th>
-                <th class="pt-0">Address</th>
-                <th class="pt-0">Status</th>
-                <th class="pt-0">Register Date</th>
-                <th class="pt-0">Status</th>
-                <th class="pt-0">Register Date</th>
-                <th class="pt-0">Change Stauts</th>
+                <th class="pt-0">Image</th>
+                <th class="pt-0">Product Name</th>
+                <th class="pt-0">Brand</th>
                 
+                <th class="pt-0">Status</th>
+                <th class="pt-0">Register Date</th>
+               
                 <th class="pt-0">Order Details</th>
               </tr>
             </thead>
             <tbody>
           
             @foreach($userOrders as $key => $users)
+            <?php  $pro_id = $users->pro_id;   
+                  $id = App\Product::find($pro_id);
+               ?>
               <tr> 
                 <td>{{$key+1}}</td>
-                <td>{{$users->fullName}}</td>
-                <td>{{$users->province}}</td>
-                <td>{{$users['postalCode']}}</td>
-                <td>{{$users['city']}}</td>
-                <td>{{$users['postalCode']}}</td>
+                <td class="py-1">
+                @foreach(json_decode($id->image,true) as $images)
+                  <img src="{{asset($images)}}" alt="image" style="border-radius: 0px; width: 75px; height: 70px;" >
+                  @break
+                 @endforeach
+                </td>
+                <td>{{ $id->proName }}</td>
+                <td>{{ $id->proBrnad }}</td>
+                
+               
                 
                @if($users['status'] == 0)
                 <td>Pending</td>
@@ -96,14 +103,13 @@
             <thead>
               <tr>
                 <th class="pt-0">#</th>
-                <th class="pt-0">User Name</th>
+                <th class="pt-0">Product Name</th>
                 <th class="pt-0">Address</th>
                 <th class="pt-0">Status</th>
-                <th class="pt-0">Register Date</th>
+                <th class="pt-0">Product</th>
                 <th class="pt-0">Status</th>
                 <th class="pt-0">Register Date</th>
-                
-                <th class="pt-0">Order Details</th>
+          
               </tr>
             </thead>
             <tbody>
@@ -111,17 +117,21 @@
             
                ?>
             @foreach($orderDetail as $key => $users)
+            <?php 
+                $pro_id =  $users->pro_id; 
+                $product = App\Product::find($pro_id);
+             ?>
               <tr> 
                 <td>{{$key+1}}</td>
-                <td>{{$order->colour}}</td>
-                <td>{{$order->size}}</td>
-                <td>{{$users['postalCode']}}</td>
-                <td>{{$users['fullName']}}</td>
-                <td>{{$users['postalCode']}}</td>
+                <td>{{$product['proName']}}</td>
+                <td>{{$product['proBrnad']}}</td>
+                <td>{{$users->quantity}}</td>
+                <td>{{$users->price}}</td>
+               
                @if($users['status'] = 0)
-                <td>In Acive</td>
+                <td>Pending</td>
                @elseif($users['status'] = 1)
-               <td>Acive</td>
+               <td>Delivered</td>
                @endif
                <td>{{$users['created_at']}}</td>
               </tr>

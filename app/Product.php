@@ -31,4 +31,14 @@ class Product extends Model
         return $this->hasOne(Price::class,'pro_id');
     }
 
+   
+     public function scopeChangeStatus($query,$id){
+        return $query->where('id', $id)->update(['status'=>0]);
+    }
+
+    public function scopeOrderItems(){
+        return $this->hasMany(OrderItem::class,'pro_id','id');
+    }
+
+     
 }

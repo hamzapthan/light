@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Order;
+use App\NewOrder;
+use App\OrderItem;
 use App\Product;
 class HomeController extends Controller
 {
@@ -27,14 +29,15 @@ class HomeController extends Controller
     {
         $countUser = User::newUsers()->count();
        
-       $countOrder   = Order::all()->count();
+       $countOrder   = NewOrder::all()->count();
        $countProduct   = Product::all()->count();
       
-       $getOrder = User::join('orders','users.id','=','orders.user_id')
-                    ->orderBy('orders.created_at','desc')
-                  ->get(['users.*','orders.*']);
+       $getOrder = User::join('new_orders','users.id','=','new_orders.user_id')
+                    ->orderBy('new_orders.created_at','desc')
+                  ->get(['users.*','new_orders.*']);
             
-          $totalSale = Order::getAllAmount()->sum('price');
+          $totalSale = OrderItem::all()->sum('price');
+         
         return view('dashboard',compact('countUser','countOrder','countProduct','getOrder','totalSale'));
        
     }

@@ -47,6 +47,7 @@ class User extends Authenticatable
     public function order(){
        return $this->hasMany(Order::class,'user_id');
     }
+
     public function orders(){
          
          return $this->hasManyThrough(Order::class,Product::class,
@@ -58,13 +59,17 @@ class User extends Authenticatable
     }
     public function scopegetUserData(){
          
-        return $this->hasManyThrough(OrderDetail::class,Order::class,
+        return $this->hasManyThrough(OrderItem::class,NewOrder::class,
           'user_id',  //
           'order_id',
           'id',
           'id'
    );
-}
+    }
+        public function scopeGetOrder($query,$id){
+         return $query->getUserData()->where('user_id',$id);
+      }
+
 
 
 }

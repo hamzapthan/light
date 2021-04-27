@@ -124,6 +124,7 @@ Route::get('/catEdit{id}edit', 'CategoryController@showCatEdit')->name('cat.edit
 Route::get('/allCatsds', 'CategoryController@changeCatStatus'); // change status category 
 Route::get('/showProducts/{id}/{name}', 'CategoryController@showProducts'); // show products against categories 
 Route::get('/add_cat', 'CategoryController@InsertCatPage')->name('/add_cat'); // show categoty page 
+
 // products Routes
 Route::get('/addPro', 'ProductController@InsertProPage')->name('/addPro'); // show Products page 
 Route::get('/showPro', 'ProductController@showAllProduct'); // show All Products  // donne
@@ -131,9 +132,9 @@ Route::Delete('delPro/{id}', 'ProductController@delProduct')->name('del.pro'); /
 Route::get('singlePro/{id}', 'ProductController@showSingleProduct'); // sHOW SINGLE Product    // done
 Route::POST('/insertPro', 'ProductController@addProducts')->name('insert.pro'); // sHOW SINGLE Product    // done
 Route::get('editProduct/{id}', 'ProductController@editProducts')->name('edit.pro'); // sHOW SINGLE Product    // done
-Route::get('ShowImage/{id}', 'ProductController@showProductImages'); // sHOW SINGLE Product    // done
+Route::get('showImage/{id}', 'ProductController@showProductImages'); // sHOW SINGLE Product    // done
 Route::DELETE('find/{image}/{id}', 'ProductController@deleteImages')->name('delete.image'); // sHOW SINGLE Product    // done
-
+Route::get('statusProSilent/{id}', 'ProductController@changeProStatus'); // change the status of product
 // user details
 
 Route::get('showUser/', 'UserController@showUserAll')->name('user.all'); // sHOW SINGLE Product    // done

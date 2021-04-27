@@ -111,8 +111,7 @@
         var catName = $('#catName').val();
        var catDetail = $('#catDetail').val();
        var status = $('#status').val();
-       console.log(id)
-       console.log("here")
+      
        let _url = `addCategory`;
        let token =  $('meta[name="csrf-token"]').attr('content');
        $.ajax({
