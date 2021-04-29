@@ -145,3 +145,7 @@ Route::get('UserOrders/{id}', 'UserController@showUserOrder')->name('show.all.or
 Route::post('addOrders/', 'OrderController@addOrders')->name('add.order'); // sHOW SINGLE Product    // done
 Route::get('OrderDetail/{id}', 'OrderController@OrderDetail')->name('show.order'); // see order agains specific person    
 Route::get('orderdelivered/{id}', 'OrderController@orderDelivered')->name('show.all.order'); // show all order adainst a specific user   
+
+//date settings
+Route::get('showDate', 'DateController@showDateInsert'); // show all order adainst a specific user   
+Route::post('dateInsert', 'DateController@dateInsert')->name('date.insert'); // show all order adainst a specific user   

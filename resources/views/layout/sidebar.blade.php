@@ -67,20 +67,15 @@
       <li class="nav-item {{ active_class(['forms/*']) }}">
         <a class="nav-link" data-toggle="collapse" href="#forms" role="button" aria-expanded="{{ is_active_route(['forms/*']) }}" aria-controls="forms">
           <i class="link-icon" data-feather="inbox"></i>
-          <span class="link-title">Forms</span>
+          <span class="link-title">Date Setting</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
         <div class="collapse {{ show_class(['forms/*']) }}" id="forms">
           <ul class="nav sub-menu">
             <li class="nav-item">
-              <a href="{{ url('/forms/basic-elements') }}" class="nav-link {{ active_class(['forms/basic-elements']) }}">Basic Elements</a>
+              <a href="showDate" class="nav-link {{ active_class(['forms/basic-elements']) }}">Add Date</a>
             </li>
-            <li class="nav-item">
-              <a href="{{ url('/forms/advanced-elements') }}" class="nav-link {{ active_class(['forms/advanced-elements']) }}">Advanced Elements</a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ url('/forms/editors') }}" class="nav-link {{ active_class(['forms/editors']) }}">Editors</a>
-            </li>
+            
             <li class="nav-item">
               <a href="{{ url('/forms/wizard') }}" class="nav-link {{ active_class(['forms/wizard']) }}">Wizard</a>
             </li>
